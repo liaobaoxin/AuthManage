@@ -160,6 +160,13 @@
                 <version>${auth.Manage.version}</version>
             </dependency>
 
+            <!--定时任务-->
+            <dependency>
+                <groupId>com.zqb</groupId>
+                <artifactId>authManage-quartz</artifactId>
+                <version>${auth.Manage.version}</version>
+            </dependency>
+
 
 
 

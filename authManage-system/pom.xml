@@ -11,5 +11,25 @@
 
     <artifactId>authManage-system</artifactId>
 
+    <description>system系统模块</description>
+
+    <dependencies>
+
+        <!-- Mysql驱动包 -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+
+        <!-- 通用工具-->
+        <dependency>
+            <groupId>com.zqb</groupId>
+            <artifactId>authManage-common</artifactId>
+        </dependency>
+
+    </dependencies>
+
+
+
 
 </project>
