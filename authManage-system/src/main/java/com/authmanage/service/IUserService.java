@@ -1,10 +1,10 @@
 package com.authmanage.service;
 
-import com.authmanage.domain.User;
-import com.baomidou.mybatisplus.extension.service.IService;
+import com.authmanage.domain.UserBean;
 
 /**
  * @date 2019/6/11 11:12
  */
-public interface IUserService extends IService<User> {
+public interface IUserService{
+    UserBean getUser(String userName);
 }
