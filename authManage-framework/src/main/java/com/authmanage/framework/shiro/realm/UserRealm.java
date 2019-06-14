@@ -64,6 +64,6 @@ public class UserRealm  extends AuthorizingRealm {
             throw new AuthenticationException("Username or password error");
         }
 
-        return new SimpleAuthenticationInfo(token, token, "my_realm");
+        return new SimpleAuthenticationInfo(userBean, token, "my_realm");
     }
 }
