@@ -1,5 +1,15 @@
 server:
   port: 8001
+  servlet:
+    # 应用的访问路径
+    context-path: /
+  tomcat:
+    # tomcat的URI编码
+    uri-encoding: UTF-8
+    # tomcat最大线程数，默认为200
+    max-threads: 800
+    # Tomcat启动初始化的线程数，默认值25
+    min-spare-threads: 30
 
 
 spring:
@@ -7,6 +17,11 @@ spring:
     active: dev2
   jackson:
     time-zone: GMT+8
+  http:
+    encoding:
+      force: true
+      charset: utf-8
+      enabled: true
 
 #jwt
 jwt:
