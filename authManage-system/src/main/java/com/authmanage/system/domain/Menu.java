@@ -1,4 +1,4 @@
-package com.authmanage.domain;
+package com.authmanage.system.domain;
 
 import lombok.Data;
 

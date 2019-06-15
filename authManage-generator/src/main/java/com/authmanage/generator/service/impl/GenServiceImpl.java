@@ -51,21 +51,29 @@ public class GenServiceImpl implements IGenService {
         VelocityContext context = GenUtils.getVelocityContext(table);
         // 获取模板列表
         List<String> templates = GenUtils.getTemplates();
-        for (String template : templates) {
-            // 渲染模板
-            StringWriter sw = new StringWriter();
-            Template tpl = Velocity.getTemplate(template, Constants.UTF8);
-            tpl.merge(context, sw);
-            try {
+        try {
+            for (String template : templates) {
+                // 渲染模板
+                StringWriter sw = new StringWriter();
+                Template tpl = Velocity.getTemplate(template, Constants.UTF8);
+                tpl.merge(context, sw);
+
                 // 添加到zip
                 zip.putNextEntry(new ZipEntry(GenUtils.getFileName(template, table, moduleName)));
                 IOUtils.write(sw.toString(), zip, Constants.UTF8);
                 IOUtils.closeQuietly(sw);
                 zip.closeEntry();
+            }
+        } catch (IOException e) {
+            log.error("渲染模板失败，表名：" + table.getTableName(), e);
+        }finally {
+            try {
+                zip.close();
             } catch (IOException e) {
-                log.error("渲染模板失败，表名：" + table.getTableName(), e);
+                e.printStackTrace();
             }
         }
+
 
     }
 

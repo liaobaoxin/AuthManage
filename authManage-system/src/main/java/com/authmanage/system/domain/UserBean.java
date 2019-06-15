@@ -1,4 +1,4 @@
-package com.authmanage.domain;
+package com.authmanage.system.domain;
 
 public class UserBean {
     private String username;

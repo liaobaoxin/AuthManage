@@ -1,9 +1,9 @@
 package com.authmanage.framework.shiro.realm;
 
-import com.authmanage.domain.UserBean;
+import com.authmanage.system.domain.UserBean;
 import com.authmanage.framework.shiro.jwt.JWTToken;
 import com.authmanage.framework.shiro.jwt.JWTUtil;
-import com.authmanage.service.IUserService;
+import com.authmanage.system.service.IUserService;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;

@@ -1,6 +1,6 @@
-package com.authmanage.mapper;
+package com.authmanage.system.mapper;
 
-import com.authmanage.domain.User;
+import com.authmanage.system.domain.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

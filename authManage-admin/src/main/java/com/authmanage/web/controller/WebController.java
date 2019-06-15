@@ -1,10 +1,11 @@
 package com.authmanage.web.controller;
 
-import com.authmanage.domain.ResponseBean;
-import com.authmanage.domain.UserBean;
+
 import com.authmanage.framework.shiro.jwt.JWTUtil;
 import com.authmanage.generator.service.IGenService;
-import com.authmanage.service.IUserService;
+import com.authmanage.system.domain.ResponseBean;
+import com.authmanage.system.domain.UserBean;
+import com.authmanage.system.service.IUserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.UnauthorizedException;
 import org.apache.shiro.authz.annotation.Logical;
@@ -32,7 +33,7 @@ public class WebController {
 
     @RequestMapping("/test1")
     public void test1() throws FileNotFoundException {
-        ZipOutputStream zip = new ZipOutputStream(new FileOutputStream(new File("D:\\文件\\新建文本文档.txt")));
+        ZipOutputStream zip = new ZipOutputStream(new FileOutputStream(new File("D:\\文件\\新建文本文档.zip")));
         genService.generatorCode("sys_user",zip);
     }
 

@@ -1,8 +1,8 @@
-package com.authmanage.service.impl;
+package com.authmanage.system.service.impl;
 
 import com.authmanage.DataSource;
-import com.authmanage.domain.UserBean;
-import com.authmanage.service.IUserService;
+import com.authmanage.system.domain.UserBean;
+import com.authmanage.system.service.IUserService;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;

@@ -1,4 +1,4 @@
-package com.authmanage.service.dto;
+package com.authmanage.system.service.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;

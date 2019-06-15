@@ -1,4 +1,4 @@
-package com.authmanage.service.dto;
+package com.authmanage.system.service.dto;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

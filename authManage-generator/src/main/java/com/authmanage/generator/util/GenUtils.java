@@ -218,9 +218,9 @@ public class GenUtils {
         javaTypeMap.put("text", "String");
         javaTypeMap.put("mediumtext", "String");
         javaTypeMap.put("longtext", "String");
-        javaTypeMap.put("time", "Date");
-        javaTypeMap.put("date", "Date");
-        javaTypeMap.put("datetime", "Date");
-        javaTypeMap.put("timestamp", "Date");
+        javaTypeMap.put("time", "LocalTime");
+        javaTypeMap.put("date", "LocalDate");
+        javaTypeMap.put("datetime", "LocalDateTime");
+        javaTypeMap.put("timestamp", "Timestamp");
     }
 }

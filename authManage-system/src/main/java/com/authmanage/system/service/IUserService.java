@@ -1,6 +1,6 @@
-package com.authmanage.service;
+package com.authmanage.system.service;
 
-import com.authmanage.domain.UserBean;
+import com.authmanage.system.domain.UserBean;
 
 /**
  * @date 2019/6/11 11:12
