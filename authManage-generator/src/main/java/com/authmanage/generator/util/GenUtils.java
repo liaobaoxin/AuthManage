@@ -95,7 +95,7 @@ public class GenUtils {
 //        templates.add("vm/java/Service.java.vm");
 //        templates.add("vm/java/ServiceImpl.java.vm");
 //        templates.add("vm/java/Controller.java.vm");
-//        templates.add("vm/xml/Mapper.xml.vm");
+        templates.add("vm/xml/Mapper.xml.vm");
 //        templates.add("vm/html/list.html.vm");
 //        templates.add("vm/html/add.html.vm");
 //        templates.add("vm/html/edit.html.vm");

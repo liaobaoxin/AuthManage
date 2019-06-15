@@ -2,6 +2,8 @@ package ${package}.domain;
 
 import lombok.Data;
 import com.authmanage.common.core.domain.BaseEntity;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.TableId;
 #foreach ($column in $columns)
 #if(($column.attrType == 'LocalDateTime') && ($column.attrname != 'createBy' && $column.attrname != 'createTime' && $column.attrname != 'updateBy' && $column.attrname != 'updateTime' && $column.attrname != 'remark'))
 import java.time.LocalDateTime;
@@ -30,10 +32,16 @@ import java.math.BigDecimal;
  * @date ${datetime}
  */
 @Data
+@TableName("${tableName}")
 public class ${className} extends BaseEntity{
 
 #foreach ($column in $columns)
-#if($column.attrname != 'createBy' && $column.attrname != 'createTime' && $column.attrname != 'updateBy' && $column.attrname != 'updateTime' && $column.attrname != 'remark')
+#if(${velocityCount} == 1)
+    /** $column.columnComment */
+    @TableId
+    private $column.attrType $column.attrname;
+#elseif($column.attrname != 'createBy' && $column.attrname != 'createTime' && $column.attrname != 'updateBy' && $column.attrname != 'updateTime' && $column.attrname != 'remark')
+
 	/** $column.columnComment */
 	private $column.attrType $column.attrname;
 #end
