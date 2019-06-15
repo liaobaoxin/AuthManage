@@ -257,6 +257,7 @@
         <module>authManage-framework</module>
         <module>authManage-quartz</module>
         <module>authManage-system</module>
+        <module>authManage-generator</module>
     </modules>
 
 

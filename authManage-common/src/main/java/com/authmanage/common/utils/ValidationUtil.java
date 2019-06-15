@@ -1,6 +1,6 @@
-package com.authmanage.utils;
+package com.authmanage.common.utils;
 
-import com.authmanage.exection.BadRequestException;
+import com.authmanage.common.exection.BadRequestException;
 
 import java.util.Optional;
 

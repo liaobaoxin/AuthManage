@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 // 指定要扫描的Mapper类的包的路径
-@MapperScan("com.authmanage.mapper")
+@MapperScan({"com.authmanage.mapper","com.authmanage.generator.mapper"})
 public class ApplicationConfig {
 
 }

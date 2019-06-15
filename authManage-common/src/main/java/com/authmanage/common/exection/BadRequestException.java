@@ -1,4 +1,4 @@
-package com.authmanage.exection;
+package com.authmanage.common.exection;
 
 import lombok.Getter;
 import org.springframework.http.HttpStatus;

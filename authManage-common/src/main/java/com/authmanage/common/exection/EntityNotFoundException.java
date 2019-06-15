@@ -1,4 +1,4 @@
-package com.authmanage.exection;
+package com.authmanage.common.exection;
 
 import org.springframework.util.StringUtils;
 
