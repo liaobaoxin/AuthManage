@@ -4,8 +4,10 @@ import com.authmanage.DataSource;
 import com.authmanage.system.domain.SysUser;
 import com.authmanage.system.domain.UserBean;
 import com.authmanage.system.mapper.SysUserMapper;
-import com.authmanage.system.service.IUserService;
+import com.authmanage.system.service.ISysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -14,7 +16,8 @@ import java.util.Map;
  * @date 2019/6/11 11:14
  */
 @Service
-public class UserServiceImpl implements IUserService {
+@CacheConfig(cacheNames = "businessCache")
+public class SysUserServiceImpl implements ISysUserService {
 
     @Autowired
     SysUserMapper userMapper;
@@ -43,6 +46,7 @@ public class UserServiceImpl implements IUserService {
      * @return 用户对象信息
      */
     @Override
+    @Cacheable
     public SysUser selectUserByLoginName(String userName) {
         return userMapper.selectUserByLoginName(userName);
     }

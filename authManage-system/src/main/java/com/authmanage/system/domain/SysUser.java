@@ -69,6 +69,11 @@ public class SysUser extends BaseEntity{
 	/**部门**/
 	private SysDept dept;
 
+	/**
+	 * 菜单
+	 */
+	private List<SysMenu> menus;
+
 
 
 }

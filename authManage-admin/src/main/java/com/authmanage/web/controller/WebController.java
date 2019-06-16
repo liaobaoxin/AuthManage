@@ -4,8 +4,9 @@ package com.authmanage.web.controller;
 import com.authmanage.framework.shiro.jwt.JWTUtil;
 import com.authmanage.generator.service.IGenService;
 import com.authmanage.system.domain.ResponseBean;
+import com.authmanage.system.domain.SysUser;
 import com.authmanage.system.domain.UserBean;
-import com.authmanage.system.service.IUserService;
+import com.authmanage.system.service.ISysUserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.UnauthorizedException;
 import org.apache.shiro.authz.annotation.Logical;
@@ -26,7 +27,7 @@ import java.util.zip.ZipOutputStream;
 public class WebController {
 
     @Autowired
-    IUserService userService;
+    ISysUserService userService;
 
     @Autowired
     IGenService genService;
@@ -34,15 +35,15 @@ public class WebController {
     @RequestMapping("/test1")
     public void test1() throws FileNotFoundException {
         ZipOutputStream zip = new ZipOutputStream(new FileOutputStream(new File("D:\\文件\\新建文本文档.zip")));
-        genService.generatorCode("sys_user",zip);
+        genService.generatorCode("sys_menu",zip);
     }
 
 
     @PostMapping("/login")
     public ResponseBean login(@RequestParam("username") String username,
                               @RequestParam("password") String password) {
-        UserBean userBean = userService.getUser(username);
-        if (userBean.getPassword().equals(password)) {
+        SysUser user = userService.selectUserByLoginName(username);
+        if (user.getPassword().equals(password)) {
             return new ResponseBean(200, "Login success", JWTUtil.sign(username, password));
         } else {
             throw new UnauthorizedException();

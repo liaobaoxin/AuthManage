@@ -13,8 +13,8 @@
             overflowToDisk="false">
     </defaultCache>
 
-    <!-- 登录记录缓存 锁定10分钟 -->
-    <cache name="loginRecordCache"
+    <!--业务缓存-->
+    <cache name="businessCache"
            maxEntriesLocalHeap="2000"
            eternal="false"
            timeToIdleSeconds="600"
@@ -23,16 +23,7 @@
            statistics="true">
     </cache>
     
-     <!-- 系统活跃用户缓存 -->
-    <cache name="sys-userCache"
-           maxEntriesLocalHeap="10000"
-           overflowToDisk="false"
-           eternal="false"
-           diskPersistent="false"
-           timeToLiveSeconds="0"
-           timeToIdleSeconds="0"
-           statistics="true">
-     </cache>
+
 
 </ehcache>
 	

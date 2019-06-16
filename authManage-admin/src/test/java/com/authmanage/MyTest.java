@@ -3,7 +3,7 @@ package com.authmanage;
 
 import com.authmanage.generator.service.IGenService;
 import com.authmanage.system.domain.SysUser;
-import com.authmanage.system.service.IUserService;
+import com.authmanage.system.service.ISysUserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,17 +23,19 @@ public class MyTest {
     IGenService genService;
 
     @Autowired
-    IUserService userService;
+    ISysUserService userService;
 
     @Test
     public void test1() throws FileNotFoundException {
         ZipOutputStream zip = new ZipOutputStream(new FileOutputStream(new File("D:\\1生成文件\\1新建文本文档.zip")));
-        genService.generatorCode("sys_dept",zip);
+        genService.generatorCode("sys_menu",zip);
     }
 
     @Test
     public void test2() throws FileNotFoundException {
-        SysUser user = userService.selectUserById(1L);
+        SysUser user = userService.selectUserById(8L);
+        System.out.println(user);
+
     }
 
 }

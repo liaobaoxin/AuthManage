@@ -6,7 +6,7 @@ import com.authmanage.system.domain.UserBean;
 /**
  * @date 2019/6/11 11:12
  */
-public interface IUserService{
+public interface ISysUserService {
     UserBean getUser(String userName);
     /**
      * 通过用户名查询用户

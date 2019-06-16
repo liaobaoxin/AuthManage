@@ -1,9 +1,14 @@
 package com.authmanage.framework.shiro.realm;
 
+import com.authmanage.framework.shiro.Utils.ShiroUtils;
+import com.authmanage.system.domain.SysMenu;
+import com.authmanage.system.domain.SysRole;
+import com.authmanage.system.domain.SysUser;
 import com.authmanage.system.domain.UserBean;
 import com.authmanage.framework.shiro.jwt.JWTToken;
 import com.authmanage.framework.shiro.jwt.JWTUtil;
-import com.authmanage.system.service.IUserService;
+import com.authmanage.system.service.ISysUserService;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -16,16 +21,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
  * @date 2019/6/14 15:28
  */
-public class UserRealm  extends AuthorizingRealm {
+public class UserRealm extends AuthorizingRealm {
 
 
     @Autowired
-    IUserService userService;
+    ISysUserService sysUserService;
 
     /**
      * 大坑！，必须重写此方法，不然Shiro会报错
@@ -37,12 +43,9 @@ public class UserRealm  extends AuthorizingRealm {
 
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-        String username = JWTUtil.getUsername(principals.toString());
-        UserBean user = userService.getUser(username);
         SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
-        simpleAuthorizationInfo.addRole(user.getRole());
-        Set<String> permission = new HashSet<>(Arrays.asList(user.getPermission().split(",")));
-        simpleAuthorizationInfo.addStringPermissions(permission);
+        ShiroUtils.getSysUser().getRoles().stream().forEach(role->simpleAuthorizationInfo.addRole(role.getRoleKey()));
+        ShiroUtils.getSysUser().getMenus().stream().forEach(menu->simpleAuthorizationInfo.addStringPermission(menu.getPerms()));
         return simpleAuthorizationInfo;
     }
 
@@ -55,15 +58,22 @@ public class UserRealm  extends AuthorizingRealm {
             throw new AuthenticationException("token invalid");
         }
 
-        UserBean userBean = userService.getUser(username);
-        if (userBean == null) {
+        SysUser sysUser = sysUserService.selectUserByLoginName(username);
+        if (sysUser == null) {
             throw new AuthenticationException("User didn't existed!");
         }
 
-        if (! JWTUtil.verify(token, username, userBean.getPassword())) {
+        if (!JWTUtil.verify(token, username, sysUser.getPassword())) {
             throw new AuthenticationException("Username or password error");
         }
 
-        return new SimpleAuthenticationInfo(userBean, token, "my_realm");
+        return new SimpleAuthenticationInfo(sysUser, token, getName());
+    }
+
+    /**
+     * 清理缓存权限
+     */
+    public void clearCachedAuthorizationInfo() {
+        this.clearCachedAuthorizationInfo(SecurityUtils.getSubject().getPrincipals());
     }
 }

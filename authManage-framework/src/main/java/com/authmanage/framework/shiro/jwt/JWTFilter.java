@@ -1,5 +1,6 @@
 package com.authmanage.framework.shiro.jwt;
 
+import lombok.extern.log4j.Log4j2;
 import org.apache.shiro.web.filter.authc.BasicHttpAuthenticationFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,9 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
+@Log4j2
 public class JWTFilter extends BasicHttpAuthenticationFilter {
 
-    private Logger LOGGER = LoggerFactory.getLogger(this.getClass());
+
 
     /**
      * 判断用户是否想要登入。
@@ -90,7 +92,7 @@ public class JWTFilter extends BasicHttpAuthenticationFilter {
             HttpServletResponse httpServletResponse = (HttpServletResponse) resp;
             httpServletResponse.sendRedirect("/401");
         } catch (IOException e) {
-            LOGGER.error(e.getMessage());
+            log.error(e.getMessage());
         }
     }
 }
