@@ -1,13 +1,12 @@
-package com.authmanage.system.service;
+package com.authmanage.system.mapper;
 
 import com.authmanage.system.domain.SysUser;
-import com.authmanage.system.domain.UserBean;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
- * @date 2019/6/11 11:12
+ * @date 2019/6/11 11:14
  */
-public interface IUserService{
-    UserBean getUser(String userName);
+public interface SysUserMapper extends BaseMapper<SysUser> {
     /**
      * 通过用户名查询用户
      *
