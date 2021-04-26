@@ -29,7 +29,7 @@
         <poi.version>3.17</poi.version>
         <velocity.version>1.7</velocity.version>
         <mybatis.plus.version>3.1.0</mybatis.plus.version>
-        <commons.io.version>2.5</commons.io.version>
+        <commons.io.version>2.7</commons.io.version>
         <log4jdbc.version>1.16</log4jdbc.version>
         <lombok.version>1.16.20</lombok.version>
         <validation.api.version>1.1.0.Final</validation.api.version>
